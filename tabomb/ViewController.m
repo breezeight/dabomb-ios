@@ -10,6 +10,15 @@
 
 @implementation ViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.navigationItem.title = @"DaBomb";
+    }
+    return self;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -34,6 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // TODO: register device
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +69,17 @@
     } else {
         return YES;
     }
+}
+
+#pragma mark Actions
+
+- (IBAction)play:(id)sender {
+    // TODO: show match controller
+    [[[UIAlertView alloc] initWithTitle:@"Show match controller"
+                                message:nil 
+                               delegate:nil 
+                      cancelButtonTitle:@"Close" 
+                      otherButtonTitles:nil] show];
 }
 
 @end

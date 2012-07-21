@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+// this is the main view controller
+// here the device is registered to the server
+// and user can start the first match
+
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+
+- (IBAction)play:(id)sender;
 
 @end
