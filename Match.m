@@ -64,16 +64,6 @@
     wire.colorName = @"purple";
     [wires addObject:wire];
     
-    wire = [[BombWire alloc] init];
-    wire.color = [UIColor magentaColor];
-    wire.colorName = @"magenta";
-    [wires addObject:wire];
-    
-    wire = [[BombWire alloc] init];
-    wire.color = [UIColor cyanColor];
-    wire.colorName = @"cyan";
-    [wires addObject:wire];
-    
     return wires;
 }
 

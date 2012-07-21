@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BombWire.h"
 
-#define kNumberOfWires 8
+#define kNumberOfWires 6
 
 @interface Match : NSObject
 {
