@@ -78,6 +78,8 @@
     }
     
     if ([self hasUser]) {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [[TBApi sharedTBApi] connetToPusherChannel:delegate.user.username];
         [self setCanPlay:YES];
     } else {
         [self setCanPlay:NO];
@@ -139,6 +141,8 @@
     [self.loadingView hide:YES];
     // unlock play button
     [self setCanPlay:YES];
+    
+    [[TBApi sharedTBApi] connetToPusherChannel:user.username];
 }
 
 - (void)failedToRegisterUserWithError:(NSString *)error {
