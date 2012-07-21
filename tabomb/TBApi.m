@@ -26,12 +26,44 @@
     [[TBApi sharedTBApi] postPath:kTBPlayerPath 
                       parameters:nil
                          success:^(AFHTTPRequestOperation *operation, id JSON) {
-                             block(true, @"", @"TODO parse the response");
+                             block(true, @"", [JSON objectForKey:@"username"]);
                          } 
                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                             block(false, @"TODO READ form server", @"");
+                             block(false, @"TODO READ NETWORK ERROR form server", @"");
                          }];
 }
+
+- (void) playMatch:(NSString*)username block:(void (^)(bool isOk, NSString *errorString, bool isPlayerAvailable, NSString* matchCode))block
+{
+    
+    [[TBApi sharedTBApi] postPath:[NSString stringWithFormat:kTBPlayPath, username] 
+                       parameters:nil
+                          success:^(AFHTTPRequestOperation *operation, id JSON) {
+                              if ([[JSON objectForKey:@"code"] isKindOfClass:[NSNull class]]) { //No Players available
+                                  block(true, @"No Player Available", false, @"null");
+                              } else {
+                                  block(true, @"", true, [JSON objectForKey:@"code"]);                                 
+                              }
+                          } 
+                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              block(false, @"TODO READ NETWORK ERROR form server", false, @"");
+                          }];
+}
+
+- (void) onMatchFinished:(NSString*)username defuseTime:(NSNumber*)defuseTime block:(void (^)(bool isOk, NSString *errorString))block
+{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: defuseTime, @"defuseTime", nil];
+    [[TBApi sharedTBApi] putPath:[NSString stringWithFormat:kTBScorePath, username] 
+                      parameters:params 
+                         success:^(AFHTTPRequestOperation *operation, id JSON) {
+                             block(true, @"");
+                         } 
+                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                             block(false, @"TODO READ form server");
+                         }];
+}
+
+
 
 /*
 - (void) putProfile:(NSString*)nickname block:(void (^)(bool *isOk, NSString *errorString))block

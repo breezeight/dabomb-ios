@@ -30,6 +30,6 @@
     //NETWORK
     #define kTBAPIBaseURLString @"http://0.0.0.0/"
     #define kTBPlayerPath @"player"
-
-
+    #define kTBPlayPath @"play/%@"
+    #define kTBScorePath @"score/%@"
 #endif
