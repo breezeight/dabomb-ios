@@ -28,8 +28,9 @@
     #endif
 
     //NETWORK
-    #define kTBAPIBaseURLString @"http://0.0.0.0/"
-    #define kTBPlayerPath @"player"
+//    #define kTBAPIBaseURLString @"http://dabomb.herokuapp.com/"
+    #define kTBAPIBaseURLString @"http://10.1.8.65:5000/"
+    #define kTBPlayerPath @"players"
     #define kTBPlayPath @"play/%@"
     #define kTBScorePath @"score/%@"
 #endif

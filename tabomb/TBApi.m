@@ -7,6 +7,8 @@
 //
 
 #import "TBApi.h"
+#import "AFJSONRequestOperation.h"
+#import "AppDelegate.h"
 
 @implementation TBApi
 
@@ -21,6 +23,16 @@
     return _sharedClient;
 }
 
+- (id)initWithBaseURL:(NSURL *)url {
+    if (self = [super initWithBaseURL:url]) {
+        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        
+        // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
+        [self setDefaultHeader:@"Accept" value:@"application/json"];
+    }
+    return self;
+}
+
 - (void) initProfile:(void (^)(bool isOk, NSString *errorString, NSString* nickname))block
 {
     [[TBApi sharedTBApi] postPath:kTBPlayerPath 
@@ -30,6 +42,7 @@
                          } 
                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                              block(false, @"TODO READ NETWORK ERROR form server", @"");
+                             DLog(@"ERROR %@", error);
                          }];
 }
 
@@ -47,6 +60,7 @@
                           } 
                           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                               block(false, @"TODO READ NETWORK ERROR form server", false, @"");
+                              DLog(@"ERROR %@", error);
                           }];
 }
 
@@ -60,7 +74,16 @@
                          } 
                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                              block(false, @"TODO READ form server");
-                         }];
+                             DLog(@"ERROR %@", error);
+    }];
+}
+
+
+- (void) connetToPusherChannel:(NSString*)username
+{
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString * channelName = [NSString stringWithFormat:@"dabomb-%@",username];
+    PTPusherChannel *channel = [appDelegate.pusherClient subscribeToChannelNamed:channelName];
 }
 
 
