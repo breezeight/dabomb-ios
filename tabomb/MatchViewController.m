@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDateFormatter *timerFormatter;
+@property (strong, nonatomic) MBProgressHUD *loadingView;
+
 - (void)startTimer;
 - (void)stopTimer;
 - (void)updateTimer:(NSTimer *)timer;
@@ -35,6 +37,7 @@
 @synthesize timer = _timer;
 @synthesize timerFormatter = _timerFormatter;
 @synthesize wiresView = _wiresView;
+@synthesize loadingView = _loadingView;
 
 - (id)initWithMatch:(Match *)match
 {
@@ -62,6 +65,7 @@
     // e.g. self.myOutlet = nil;
     self.timerLabel = nil;
     self.wiresView = nil;
+    self.loadingView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -71,6 +75,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (!self.loadingView) {
+        self.loadingView = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:self.loadingView];
+    }
+    
     [self play];
 }
 
@@ -141,7 +151,36 @@
     if (buttonIndex == alertView.cancelButtonIndex) {
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.match hasMoreWiresToCut]) {
+        // play again
+        self.loadingView.labelText = @"Waiting for a player…";
+        [self.loadingView show:YES];
         
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [[TBApi sharedTBApi] playMatch:delegate.user.username 
+                                 block:^(bool isOk, NSString *errorString, bool isPlayerAvailable, NSString* matchCode) {
+             if (isOk) {
+                 if (isPlayerAvailable) {
+                     DLog(@"match created");
+                     Match *match = [[Match alloc] init];
+                     match.identifier = matchCode;
+                     self.match = match;
+                     [self play];
+                     
+                     [self.loadingView hide:YES];
+                 } else {
+                     DLog(@"no players ready to play");
+    #warning listen for player available notification
+                 }
+             } else {
+                 // in case request has failed go back to the main controller
+                 [[[UIAlertView alloc] initWithTitle:@"Cannot create match" 
+                                             message:errorString 
+                                            delegate:nil 
+                                   cancelButtonTitle:@"Ok" 
+                                   otherButtonTitles:nil] show];
+                 [self.navigationController popViewControllerAnimated:YES];
+             }
+         }];
     }
 }
 

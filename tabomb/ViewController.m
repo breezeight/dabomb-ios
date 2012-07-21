@@ -168,6 +168,7 @@
                 [self matchCreated:match];
             } else {
                 DLog(@"no players ready to play");
+#warning listen for player available notification
             }
         } else {
             [self failedToRegisterUserWithError:errorString];
