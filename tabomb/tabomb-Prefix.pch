@@ -20,4 +20,16 @@
     #else
     #   define DLog(...)
     #endif
+
+    #if defined DEBUG && !defined NO_NSLOG
+    #   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+    #else
+    #   define ULog(...)
+    #endif
+
+    //NETWORK
+    #define kTBAPIBaseURLString @"http://0.0.0.0/"
+    #define kTBPlayerPath @"player"
+
+
 #endif
