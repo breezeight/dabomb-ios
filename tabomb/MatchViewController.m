@@ -8,10 +8,11 @@
 
 #import "MatchViewController.h"
 #import "Match.h"
+#import "BombWireView.h"
 
 @interface MatchViewController ()
 
-- (void)play;
+- (void)updateWiresView;
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDateFormatter *timerFormatter;
@@ -46,7 +47,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self updateTimer:self.timer];
 }
 
 - (void)viewDidUnload
@@ -63,15 +63,32 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self play];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // update zero-timer
+    [self updateTimer:self.timer];
+    
+    // shuffle match wires and update views
+    [self.match shuffleWires];
+    [self updateWiresView];
 }
 
-- (void)play {
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // set creation date as the moment this controller appears
     self.match.createdAt = [NSDate date];
+    // start timer
     [self startTimer];
     [self updateTimer:self.timer];
+}
+
+- (void)updateWiresView {
+    for (BombWire *wire in self.match.wires) {
+        BombWireView *view = [self.wiresView.subviews objectAtIndex:[self.match.wires indexOfObject:wire]];
+        [view updateWithWire:wire];
+    }
 }
 
 #pragma mark Timer

@@ -15,5 +15,6 @@
 @property (strong, nonatomic) Match *match;
 
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+@property (strong, nonatomic) IBOutlet UIView *wiresView;
 
 @end
