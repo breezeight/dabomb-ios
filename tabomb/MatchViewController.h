@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Match;
 
 @interface MatchViewController : UIViewController
 
-- (id)initWithMatch:(id)match;
-@property (strong, nonatomic) id match;
+- (id)initWithMatch:(Match *)match;
+@property (strong, nonatomic) Match *match;
 
 @end

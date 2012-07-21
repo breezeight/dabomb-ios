@@ -7,6 +7,7 @@
 //
 
 #import "MatchViewController.h"
+#import "Match.h"
 
 @interface MatchViewController ()
 
@@ -16,7 +17,7 @@
 
 @synthesize match = _match;
 
-- (id)initWithMatch:(id)match
+- (id)initWithMatch:(Match *)match
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {

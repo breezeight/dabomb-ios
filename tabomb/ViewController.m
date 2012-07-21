@@ -11,6 +11,7 @@
 #import "MatchViewController.h"
 #import "TBApi.h"
 #import "User.h"
+#import "Match.h"
 #import "AppDelegate.h"
 
 @interface ViewController ()
@@ -25,7 +26,7 @@
 - (void)failedToRegisterUserWithError:(NSError *)error;
 
 - (void)createNewMatch;
-- (void)matchCreated:(id)response;
+- (void)matchCreated:(Match *)match;
 - (void)failedToCreateMatchWithError:(NSError *)error;
 
 @end
@@ -152,12 +153,14 @@
     
     // ask server to create new match
 #warning creating a new match is simulated
-    [self performSelector:@selector(matchCreated:) withObject:nil afterDelay:2];
+    Match *fakeMatch = [[Match alloc] init];
+    fakeMatch.identifier = @"fake";
+    [self performSelector:@selector(matchCreated:) withObject:fakeMatch afterDelay:2];
 }
 
-- (void)matchCreated:(id)response {
+- (void)matchCreated:(Match *)match {
     [self.loadingView hide:YES];
-    MatchViewController *matchViewController = [[MatchViewController alloc] initWithMatch:response];
+    MatchViewController *matchViewController = [[MatchViewController alloc] initWithMatch:match];
     [self.navigationController pushViewController:matchViewController animated:YES];
 }
 
