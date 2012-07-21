@@ -9,9 +9,15 @@
 #import "MatchViewController.h"
 #import "Match.h"
 #import "BombWireView.h"
+#import "TBApi.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
+#import "User.h"
 
 @interface MatchViewController () <UIAlertViewDelegate>
 
+- (void)play;
+- (void)matchDidEnd:(BOOL)victory;
 - (void)updateWiresView;
 
 @property (strong, nonatomic) NSTimer *timer;
@@ -65,20 +71,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    // update zero-timer
-    [self updateTimer:self.timer];
-    
+    [self play];
+}
+
+#pragma mark Match
+
+- (void)play {
+    // set creation date as the moment this controller appears
+    self.match.createdAt = [NSDate date];
     // shuffle match wires and update views
     [self.match shuffleWires];
     [self updateWiresView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     
-    // set creation date as the moment this controller appears
-    self.match.createdAt = [NSDate date];
     // start timer
     [self startTimer];
     [self updateTimer:self.timer];
@@ -99,14 +103,14 @@
     // check if user has pressed the killer wire
     // or if user has cut all the good wires
     if ([self.match.killerWire isEqual:wire]) {
-        [self stopTimer];
+        [self matchDidEnd:YES];
         [[[UIAlertView alloc] initWithTitle:@"You looooose!" 
                                     message:nil 
                                    delegate:self 
                           cancelButtonTitle:@"Close" 
                           otherButtonTitles:@"Play again", nil] show];
     } else if (![self.match hasMoreWiresToCut]) {
-        [self stopTimer];
+        [self matchDidEnd:NO];
         [[[UIAlertView alloc] initWithTitle:@"You wiiin!" 
                                     message:nil 
                                    delegate:self 
@@ -115,15 +119,29 @@
     }
 }
 
+- (void)matchDidEnd:(BOOL)victory {
+    [self stopTimer];
+    
+    NSTimeInterval elapsedTime;
+    if (victory) {
+        elapsedTime = -[self.match.createdAt timeIntervalSinceNow];
+    } else {
+        elapsedTime = -1;
+    }
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [[TBApi sharedTBApi] onMatchFinished:delegate.user.username 
+                              defuseTime:[NSNumber numberWithDouble:elapsedTime] 
+                                   block:^(bool isOk, NSString *errorString) { 
+                                       DLog(@"%d, %@", isOk, errorString);
+                                   }];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == alertView.cancelButtonIndex) {
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.match hasMoreWiresToCut]) {
-#warning start a new match is simulated
-        self.match.createdAt = [NSDate date];
-        [self.match shuffleWires];
-        [self updateWiresView];
-        [self startTimer];
+        
     }
 }
 
