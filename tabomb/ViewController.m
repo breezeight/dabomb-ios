@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MBProgressHUD.h"
+#import "MatchViewController.h"
 
 @interface ViewController ()
 
@@ -146,11 +147,8 @@
 
 - (void)matchCreated:(id)response {
     [self.loadingView hide:YES];
-    [[[UIAlertView alloc] initWithTitle:@"Match created" 
-                                message:nil 
-                               delegate:nil 
-                      cancelButtonTitle:@"Ok" 
-                      otherButtonTitles:nil] show];
+    MatchViewController *matchViewController = [[MatchViewController alloc] initWithMatch:response];
+    [self.navigationController pushViewController:matchViewController animated:YES];
 }
 
 - (void)failedToCreateMatchWithError:(NSError *)error {

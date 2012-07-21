@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D8A153915BAE081001131B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A153815BAE081001131B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3D8A153D15BAE6C1001131B6 /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A153B15BAE6C1001131B6 /* MatchViewController.m */; };
+		3D8A153E15BAE6C1001131B6 /* MatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */; };
 		ADE0A23B15BAB598008C9A2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23A15BAB598008C9A2D /* UIKit.framework */; };
 		ADE0A23D15BAB598008C9A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23C15BAB598008C9A2D /* Foundation.framework */; };
 		ADE0A23F15BAB598008C9A2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23E15BAB598008C9A2D /* CoreGraphics.framework */; };
@@ -28,6 +30,9 @@
 /* Begin PBXFileReference section */
 		3D8A153715BAE081001131B6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3D8A153815BAE081001131B6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		3D8A153A15BAE6C1001131B6 /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchViewController.h; sourceTree = "<group>"; };
+		3D8A153B15BAE6C1001131B6 /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
+		3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchViewController.xib; sourceTree = "<group>"; };
 		ADE0A23615BAB598008C9A2D /* tabomb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tabomb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE0A23A15BAB598008C9A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADE0A23C15BAB598008C9A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +144,9 @@
 				ADE0A24D15BAB598008C9A2D /* ViewController.m */,
 				ADE0A24F15BAB598008C9A2D /* ViewController~iPhone.xib */,
 				ADE0A25215BAB598008C9A2D /* ViewController~iPad.xib */,
+				3D8A153A15BAE6C1001131B6 /* MatchViewController.h */,
+				3D8A153B15BAE6C1001131B6 /* MatchViewController.m */,
+				3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */,
 				ADE0A24115BAB598008C9A2D /* Supporting Files */,
 			);
 			path = tabomb;
@@ -246,6 +254,7 @@
 				ADE0A25115BAB598008C9A2D /* ViewController~iPhone.xib in Resources */,
 				ADE0A25415BAB598008C9A2D /* ViewController~iPad.xib in Resources */,
 				ADE0A27515BABFB4008C9A2D /* README.txt in Resources */,
+				3D8A153E15BAE6C1001131B6 /* MatchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +269,7 @@
 				ADE0A24B15BAB598008C9A2D /* AppDelegate.m in Sources */,
 				ADE0A24E15BAB598008C9A2D /* ViewController.m in Sources */,
 				3D8A153915BAE081001131B6 /* MBProgressHUD.m in Sources */,
+				3D8A153D15BAE6C1001131B6 /* MatchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
