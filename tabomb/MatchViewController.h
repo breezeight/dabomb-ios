@@ -14,4 +14,6 @@
 - (id)initWithMatch:(Match *)match;
 @property (strong, nonatomic) Match *match;
 
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+
 @end
