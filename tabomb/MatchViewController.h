@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIView *wiresView;
 
 - (IBAction)wireViewPressed:(BombWireView *)view;
+- (void) onPlayerAvailable: (NSString*) matchCode;
 
 @end

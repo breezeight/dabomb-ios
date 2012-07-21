@@ -141,10 +141,21 @@
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [[TBApi sharedTBApi] onMatchFinished:delegate.user.username 
-                              defuseTime:[NSNumber numberWithDouble:elapsedTime] 
+                              defuseTime:[NSNumber numberWithDouble:elapsedTime]
+                              matchIdentifier: self.match.identifier
                                    block:^(bool isOk, NSString *errorString) { 
                                        DLog(@"%d, %@", isOk, errorString);
                                    }];
+}
+
+- (void) onPlayerAvailable: (NSString*) matchCode
+{
+    DLog(@"match created");
+    Match *match = [[Match alloc] init];
+    match.identifier = matchCode;
+    self.match = match;
+    [self play];
+    [self.loadingView hide:YES];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -160,17 +171,17 @@
                                  block:^(bool isOk, NSString *errorString, bool isPlayerAvailable, NSString* matchCode) {
              if (isOk) {
                  if (isPlayerAvailable) {
-                     DLog(@"match created");
-                     Match *match = [[Match alloc] init];
-                     match.identifier = matchCode;
-                     self.match = match;
-                     [self play];
-                     
-                     [self.loadingView hide:YES];
+                     [self onPlayerAvailable:matchCode];
                  } else {
                      DLog(@"no players ready to play");
                      // TODO: liste for player available notification.
                      // call createNewMatch when ready
+
+                     [[NSNotificationCenter defaultCenter] 
+                      addObserver:self 
+                      selector:@selector(didReceiveChannelEventNotification:) 
+                      name:PTPusherEventReceivedNotification 
+                      object:[[TBApi sharedTBApi] channel]];
                  }
              } else {
                  // in case request has failed go back to the main controller
@@ -183,6 +194,30 @@
              }
          }];
     }
+}
+
+#pragma mark pusher notification
+
+- (void) didReceiveChannelEventNotification:(NSNotification *)notification
+{
+    DLog(@"%@", notification);
+    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
+    
+    /*NSError *e = nil;
+     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
+     
+     if (!jsonArray) {
+     NSLog(@"Error parsing JSON: %@", e);
+     } else {
+     for(NSDictionary *item in jsonArray) {
+     NSLog(@"Item: %@", item);
+     }
+     }*/
+    DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
+    NSDictionary* data = [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data];
+    if ([data objectForKey:@"code"])
+        [self onPlayerAvailable:[data objectForKey:@"code"]];
+    //[[[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data] objectForKey:@"code"];
 }
 
 #pragma mark Timer
