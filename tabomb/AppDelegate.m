@@ -15,7 +15,6 @@
 @interface AppDelegate ()
 
 - (User *)readUserFromDisk;
-- (BOOL)removeUserFromDisk:(User *)user;
 
 @end
 
@@ -252,9 +251,13 @@
 	return result;
 }
 
-- (BOOL)removeUserFromDisk:(User *)user {
+- (BOOL)removeUserFromDisk {
 	// remove user file
-	return [[NSFileManager defaultManager] removeItemAtPath:[self userCacheFile] error:nil];
+	if ([[NSFileManager defaultManager] removeItemAtPath:[self userCacheFile] error:nil]) {
+        self.user = nil;
+        return YES;
+    }
+    return NO;
 }
 
 @end

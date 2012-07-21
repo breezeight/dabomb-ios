@@ -20,5 +20,6 @@
 
 @property (strong, nonatomic) User *user;
 - (BOOL)saveUserToDisk:(User *)user;
+- (BOOL)removeUserFromDisk;
 
 @end
