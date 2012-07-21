@@ -66,10 +66,11 @@
                           }];
 }
 
-- (void) onMatchFinished:(NSString*)username defuseTime:(NSNumber*)defuseTime block:(void (^)(bool isOk, NSString *errorString))block
+- (void) onMatchFinished:(NSString*)username defuseTime:(NSNumber*)defuseTime matchIdentifier:(NSString*)matchIdentifier block:(void (^)(bool isOk, NSString *errorString))block
 {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: defuseTime, @"defuseTime", nil];
-    [[TBApi sharedTBApi] putPath:[NSString stringWithFormat:kTBScorePath, username] 
+    //TODO codice partita
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: defuseTime, @"time", username, @"username", nil];
+    [[TBApi sharedTBApi] putPath:[NSString stringWithFormat:kTBDefusePath, matchIdentifier] 
                       parameters:params 
                          success:^(AFHTTPRequestOperation *operation, id JSON) {
                              block(true, @"");
@@ -86,9 +87,33 @@
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString * channelName = [NSString stringWithFormat:@"dabomb-%@",username];
     self.channel = [appDelegate.pusherClient subscribeToChannelNamed:channelName];
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(didReceiveChannelEventNotification:) 
+     name:PTPusherEventReceivedNotification 
+     object:self.channel];
+    
+    DLog(@"%@", channelName)
 }
 
+- (void) didReceiveChannelEventNotification:(NSNotification *)notification
+{
+    DLog(@"%@", notification);
+    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
 
+    /*NSError *e = nil;
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
+    
+    if (!jsonArray) {
+        NSLog(@"Error parsing JSON: %@", e);
+    } else {
+        for(NSDictionary *item in jsonArray) {
+            NSLog(@"Item: %@", item);
+        }
+    }*/
+    DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
+    
+}
 
 /*
 - (void) putProfile:(NSString*)nickname block:(void (^)(bool *isOk, NSString *errorString))block

@@ -16,10 +16,11 @@
 
 - (void) initProfile:(void (^)(bool isOk, NSString *errorString, NSString* nickname))block;
 - (void) playMatch:(NSString*)username block:(void (^)(bool isOk, NSString *errorString, bool isPlayerAvailable, NSString* matchCode))block;
-- (void) onMatchFinished:(NSString*)username defuseTime:(NSNumber*)defuseTime block:(void (^)(bool isOk, NSString *errorString))block;
+- (void) onMatchFinished:(NSString*)username defuseTime:(NSNumber*)defuseTime matchIdentifier:(NSString*)matchIdentifier  block:(void (^)(bool isOk, NSString *errorString))block;
 
 - (void) connetToPusherChannel:(NSString*)username;
 
+- (void) didReceiveChannelEventNotification:(NSNotification *)notification;
 
 //- (void) updateProfile:(NSString*)nickname block:(void (^)(bool *isOk, NSString *errorString))block;
 
