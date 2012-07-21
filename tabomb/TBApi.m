@@ -12,6 +12,8 @@
 
 @implementation TBApi
 
+@synthesize channel = _channel;
+
 + (TBApi *)sharedTBApi {
     static TBApi *_sharedClient = nil;
     static dispatch_once_t onceToken;
@@ -83,7 +85,7 @@
 {
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString * channelName = [NSString stringWithFormat:@"dabomb-%@",username];
-    PTPusherChannel *channel = [appDelegate.pusherClient subscribeToChannelNamed:channelName];
+    self.channel = [appDelegate.pusherClient subscribeToChannelNamed:channelName];
 }
 
 

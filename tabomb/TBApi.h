@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
+#import "PTPusher.h"
 
 @interface TBApi : AFHTTPClient
 
@@ -20,7 +21,7 @@
 - (void) connetToPusherChannel:(NSString*)username;
 
 
-
 //- (void) updateProfile:(NSString*)nickname block:(void (^)(bool *isOk, NSString *errorString))block;
 
+@property(strong, nonatomic) PTPusherChannel* channel;
 @end
