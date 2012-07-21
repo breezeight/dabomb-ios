@@ -23,11 +23,11 @@
 - (BOOL)hasUser;
 - (void)registerUser;
 - (void)userRegistered:(User *)user;
-- (void)failedToRegisterUserWithError:(NSError *)error;
+- (void)failedToRegisterUserWithError:(NSString *)error;
 
 - (void)createNewMatch;
 - (void)matchCreated:(Match *)match;
-- (void)failedToCreateMatchWithError:(NSError *)error;
+- (void)failedToCreateMatchWithError:(NSString *)error;
 
 @end
 
@@ -119,11 +119,16 @@
     self.loadingView.labelText = @"Loading…";
     [self.loadingView show:YES];
     
-    // ask server to create new match
-#warning registering a new user is simulated
-    User *fakeUser = [[User alloc] init];
-    fakeUser.username = @"fake";
-    [self performSelector:@selector(userRegistered:) withObject:fakeUser afterDelay:2];
+    // ask server to create new user
+    [[TBApi sharedTBApi] initProfile:^(bool isOk, NSString *errorString, NSString* nickname) {
+        if (isOk) {
+            User *user = [[User alloc] init];
+            user.username = nickname;
+            [self userRegistered:user];
+        } else {
+            [self failedToRegisterUserWithError:errorString];
+        }
+    }];
 }
 
 - (void)userRegistered:(User *)user {
@@ -136,10 +141,10 @@
     [self setCanPlay:YES];
 }
 
-- (void)failedToRegisterUserWithError:(NSError *)error {
+- (void)failedToRegisterUserWithError:(NSString *)error {
     [self.loadingView hide:YES];
     [[[UIAlertView alloc] initWithTitle:@"Cannot register user" 
-                                message:[error localizedDescription] 
+                                message:error 
                                delegate:nil 
                       cancelButtonTitle:@"Ok" 
                       otherButtonTitles:nil] show];
@@ -152,10 +157,22 @@
     [self.loadingView show:YES];
     
     // ask server to create new match
-#warning creating a new match is simulated
-    Match *fakeMatch = [[Match alloc] init];
-    fakeMatch.identifier = @"fake";
-    [self performSelector:@selector(matchCreated:) withObject:fakeMatch afterDelay:2];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [[TBApi sharedTBApi] playMatch:delegate.user.username 
+                             block:^(bool isOk, NSString *errorString, bool isPlayerAvailable, NSString* matchCode) {
+        if (isOk) {
+            if (isPlayerAvailable) {
+                DLog(@"match created");
+                Match *match = [[Match alloc] init];
+                match.identifier = matchCode;
+                [self matchCreated:match];
+            } else {
+                DLog(@"no players ready to play");
+            }
+        } else {
+            [self failedToRegisterUserWithError:errorString];
+        }
+    }];
 }
 
 - (void)matchCreated:(Match *)match {
@@ -164,10 +181,10 @@
     [self.navigationController pushViewController:matchViewController animated:YES];
 }
 
-- (void)failedToCreateMatchWithError:(NSError *)error {
+- (void)failedToCreateMatchWithError:(NSString *)error {
     [self.loadingView hide:YES];
     [[[UIAlertView alloc] initWithTitle:@"Cannot create match" 
-                                message:[error localizedDescription] 
+                                message:error 
                                delegate:nil 
                       cancelButtonTitle:@"Ok" 
                       otherButtonTitles:nil] show];
