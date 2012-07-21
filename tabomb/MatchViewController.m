@@ -27,6 +27,7 @@
 @synthesize timerLabel = _timerLabel;
 @synthesize timer = _timer;
 @synthesize timerFormatter = _timerFormatter;
+@synthesize wiresView = _wiresView;
 
 - (id)initWithMatch:(Match *)match
 {
@@ -54,6 +55,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.timerLabel = nil;
+    self.wiresView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -13,6 +13,7 @@
 		3D8A154915BAED7F001131B6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A154815BAED7F001131B6 /* User.m */; };
 		3D8A155815BAF169001131B6 /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A155715BAF169001131B6 /* Match.m */; };
 		3D8A156F15BAF9FF001131B6 /* BombWire.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A156E15BAF9FF001131B6 /* BombWire.m */; };
+		3D8A157215BB00E2001131B6 /* BombWireView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A157115BB00E2001131B6 /* BombWireView.m */; };
 		AD56248A15BADE6F00B808CD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247615BADE6F00B808CD /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD56248B15BADE6F00B808CD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247815BADE6F00B808CD /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD56248C15BADE6F00B808CD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247A15BADE6F00B808CD /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -53,6 +54,8 @@
 		3D8A155715BAF169001131B6 /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
 		3D8A156D15BAF9FF001131B6 /* BombWire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombWire.h; sourceTree = "<group>"; };
 		3D8A156E15BAF9FF001131B6 /* BombWire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BombWire.m; sourceTree = "<group>"; };
+		3D8A157015BB00E2001131B6 /* BombWireView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombWireView.h; sourceTree = "<group>"; };
+		3D8A157115BB00E2001131B6 /* BombWireView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BombWireView.m; sourceTree = "<group>"; };
 		AD56247515BADE6F00B808CD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		AD56247615BADE6F00B808CD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		AD56247715BADE6F00B808CD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				3D8A153A15BAE6C1001131B6 /* MatchViewController.h */,
 				3D8A153B15BAE6C1001131B6 /* MatchViewController.m */,
 				3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */,
+				3D8A157015BB00E2001131B6 /* BombWireView.h */,
+				3D8A157115BB00E2001131B6 /* BombWireView.m */,
 				ADE0A24115BAB598008C9A2D /* Supporting Files */,
 			);
 			path = tabomb;
@@ -373,6 +378,7 @@
 				3D8A154915BAED7F001131B6 /* User.m in Sources */,
 				3D8A155815BAF169001131B6 /* Match.m in Sources */,
 				3D8A156F15BAF9FF001131B6 /* BombWire.m in Sources */,
+				3D8A157215BB00E2001131B6 /* BombWireView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
