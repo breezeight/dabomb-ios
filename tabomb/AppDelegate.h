@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PTPusher.h"
 
-@class ViewController;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate, PTPusherDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) PTPusher *pusherClient;
 
