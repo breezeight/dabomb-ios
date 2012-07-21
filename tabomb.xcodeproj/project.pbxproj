@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ADE0A23B15BAB598008C9A2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23A15BAB598008C9A2D /* UIKit.framework */; };
+		ADE0A23D15BAB598008C9A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23C15BAB598008C9A2D /* Foundation.framework */; };
+		ADE0A23F15BAB598008C9A2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23E15BAB598008C9A2D /* CoreGraphics.framework */; };
+		ADE0A24515BAB598008C9A2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADE0A24315BAB598008C9A2D /* InfoPlist.strings */; };
+		ADE0A24715BAB598008C9A2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE0A24615BAB598008C9A2D /* main.m */; };
+		ADE0A24B15BAB598008C9A2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE0A24A15BAB598008C9A2D /* AppDelegate.m */; };
+		ADE0A24E15BAB598008C9A2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE0A24D15BAB598008C9A2D /* ViewController.m */; };
+		ADE0A25115BAB598008C9A2D /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0A24F15BAB598008C9A2D /* ViewController_iPhone.xib */; };
+		ADE0A25415BAB598008C9A2D /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0A25215BAB598008C9A2D /* ViewController_iPad.xib */; };
+		ADE0A27215BABFB4008C9A2D /* libPusher-combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A26E15BABFB4008C9A2D /* libPusher-combined.a */; };
+		ADE0A27515BABFB4008C9A2D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADE0A27115BABFB4008C9A2D /* README.txt */; };
+		ADE0A27715BAC02B008C9A2D /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A27615BAC02B008C9A2D /* libicucore.dylib */; };
+		ADE0A27915BAC03D008C9A2D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A27815BAC03D008C9A2D /* CFNetwork.framework */; };
+		ADE0A27B15BAC04E008C9A2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A27A15BAC04E008C9A2D /* Security.framework */; };
+		ADE0A27D15BAC05B008C9A2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A27C15BAC05B008C9A2D /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ADE0A23615BAB598008C9A2D /* tabomb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tabomb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADE0A23A15BAB598008C9A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ADE0A23C15BAB598008C9A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ADE0A23E15BAB598008C9A2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ADE0A24215BAB598008C9A2D /* tabomb-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tabomb-Info.plist"; sourceTree = "<group>"; };
+		ADE0A24415BAB598008C9A2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ADE0A24615BAB598008C9A2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ADE0A24815BAB598008C9A2D /* tabomb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tabomb-Prefix.pch"; sourceTree = "<group>"; };
+		ADE0A24915BAB598008C9A2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ADE0A24A15BAB598008C9A2D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ADE0A24C15BAB598008C9A2D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		ADE0A24D15BAB598008C9A2D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ADE0A25015BAB598008C9A2D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		ADE0A25315BAB598008C9A2D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		ADE0A25D15BABFB4008C9A2D /* PTEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEventListener.h; sourceTree = "<group>"; };
+		ADE0A25E15BABFB4008C9A2D /* PTJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTJSON.h; sourceTree = "<group>"; };
+		ADE0A25F15BABFB4008C9A2D /* PTJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTJSONParser.h; sourceTree = "<group>"; };
+		ADE0A26015BABFB4008C9A2D /* PTPusher+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTPusher+Testing.h"; sourceTree = "<group>"; };
+		ADE0A26115BABFB4008C9A2D /* PTPusher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusher.h; sourceTree = "<group>"; };
+		ADE0A26215BABFB4008C9A2D /* PTPusherAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherAPI.h; sourceTree = "<group>"; };
+		ADE0A26315BABFB4008C9A2D /* PTPusherChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherChannel.h; sourceTree = "<group>"; };
+		ADE0A26415BABFB4008C9A2D /* PTPusherConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherConnection.h; sourceTree = "<group>"; };
+		ADE0A26515BABFB4008C9A2D /* PTPusherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherDelegate.h; sourceTree = "<group>"; };
+		ADE0A26615BABFB4008C9A2D /* PTPusherErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherErrors.h; sourceTree = "<group>"; };
+		ADE0A26715BABFB4008C9A2D /* PTPusherEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherEvent.h; sourceTree = "<group>"; };
+		ADE0A26815BABFB4008C9A2D /* PTPusherEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherEventDispatcher.h; sourceTree = "<group>"; };
+		ADE0A26915BABFB4008C9A2D /* PTPusherEventPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherEventPublisher.h; sourceTree = "<group>"; };
+		ADE0A26A15BABFB4008C9A2D /* PTPusherMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherMacros.h; sourceTree = "<group>"; };
+		ADE0A26B15BABFB4008C9A2D /* PTPusherMockConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherMockConnection.h; sourceTree = "<group>"; };
+		ADE0A26C15BABFB4008C9A2D /* PTPusherPresenceChannelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPusherPresenceChannelDelegate.h; sourceTree = "<group>"; };
+		ADE0A26D15BABFB4008C9A2D /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		ADE0A26E15BABFB4008C9A2D /* libPusher-combined.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPusher-combined.a"; sourceTree = "<group>"; };
+		ADE0A26F15BABFB4008C9A2D /* libPusher-iphoneos5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPusher-iphoneos5.0.a"; sourceTree = "<group>"; };
+		ADE0A27015BABFB4008C9A2D /* libPusher-iphonesimulator5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPusher-iphonesimulator5.0.a"; sourceTree = "<group>"; };
+		ADE0A27115BABFB4008C9A2D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		ADE0A27615BAC02B008C9A2D /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		ADE0A27815BAC03D008C9A2D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		ADE0A27A15BAC04E008C9A2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ADE0A27C15BAC05B008C9A2D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ADE0A23315BAB598008C9A2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE0A27D15BAC05B008C9A2D /* SystemConfiguration.framework in Frameworks */,
+				ADE0A27B15BAC04E008C9A2D /* Security.framework in Frameworks */,
+				ADE0A27915BAC03D008C9A2D /* CFNetwork.framework in Frameworks */,
+				ADE0A27715BAC02B008C9A2D /* libicucore.dylib in Frameworks */,
+				ADE0A23B15BAB598008C9A2D /* UIKit.framework in Frameworks */,
+				ADE0A23D15BAB598008C9A2D /* Foundation.framework in Frameworks */,
+				ADE0A23F15BAB598008C9A2D /* CoreGraphics.framework in Frameworks */,
+				ADE0A27215BABFB4008C9A2D /* libPusher-combined.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ADE0A22B15BAB598008C9A2D = {
+			isa = PBXGroup;
+			children = (
+				ADE0A27C15BAC05B008C9A2D /* SystemConfiguration.framework */,
+				ADE0A27A15BAC04E008C9A2D /* Security.framework */,
+				ADE0A27815BAC03D008C9A2D /* CFNetwork.framework */,
+				ADE0A27615BAC02B008C9A2D /* libicucore.dylib */,
+				ADE0A24015BAB598008C9A2D /* tabomb */,
+				ADE0A23915BAB598008C9A2D /* Frameworks */,
+				ADE0A23715BAB598008C9A2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ADE0A23715BAB598008C9A2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A23615BAB598008C9A2D /* tabomb.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ADE0A23915BAB598008C9A2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A25B15BABFB4008C9A2D /* libPusher */,
+				ADE0A23A15BAB598008C9A2D /* UIKit.framework */,
+				ADE0A23C15BAB598008C9A2D /* Foundation.framework */,
+				ADE0A23E15BAB598008C9A2D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADE0A24015BAB598008C9A2D /* tabomb */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A24915BAB598008C9A2D /* AppDelegate.h */,
+				ADE0A24A15BAB598008C9A2D /* AppDelegate.m */,
+				ADE0A24C15BAB598008C9A2D /* ViewController.h */,
+				ADE0A24D15BAB598008C9A2D /* ViewController.m */,
+				ADE0A24F15BAB598008C9A2D /* ViewController_iPhone.xib */,
+				ADE0A25215BAB598008C9A2D /* ViewController_iPad.xib */,
+				ADE0A24115BAB598008C9A2D /* Supporting Files */,
+			);
+			path = tabomb;
+			sourceTree = "<group>";
+		};
+		ADE0A24115BAB598008C9A2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A24215BAB598008C9A2D /* tabomb-Info.plist */,
+				ADE0A24315BAB598008C9A2D /* InfoPlist.strings */,
+				ADE0A24615BAB598008C9A2D /* main.m */,
+				ADE0A24815BAB598008C9A2D /* tabomb-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ADE0A25B15BABFB4008C9A2D /* libPusher */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A25C15BABFB4008C9A2D /* headers */,
+				ADE0A26E15BABFB4008C9A2D /* libPusher-combined.a */,
+				ADE0A26F15BABFB4008C9A2D /* libPusher-iphoneos5.0.a */,
+				ADE0A27015BABFB4008C9A2D /* libPusher-iphonesimulator5.0.a */,
+				ADE0A27115BABFB4008C9A2D /* README.txt */,
+			);
+			name = libPusher;
+			path = libs/libPusher;
+			sourceTree = "<group>";
+		};
+		ADE0A25C15BABFB4008C9A2D /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				ADE0A25D15BABFB4008C9A2D /* PTEventListener.h */,
+				ADE0A25E15BABFB4008C9A2D /* PTJSON.h */,
+				ADE0A25F15BABFB4008C9A2D /* PTJSONParser.h */,
+				ADE0A26015BABFB4008C9A2D /* PTPusher+Testing.h */,
+				ADE0A26115BABFB4008C9A2D /* PTPusher.h */,
+				ADE0A26215BABFB4008C9A2D /* PTPusherAPI.h */,
+				ADE0A26315BABFB4008C9A2D /* PTPusherChannel.h */,
+				ADE0A26415BABFB4008C9A2D /* PTPusherConnection.h */,
+				ADE0A26515BABFB4008C9A2D /* PTPusherDelegate.h */,
+				ADE0A26615BABFB4008C9A2D /* PTPusherErrors.h */,
+				ADE0A26715BABFB4008C9A2D /* PTPusherEvent.h */,
+				ADE0A26815BABFB4008C9A2D /* PTPusherEventDispatcher.h */,
+				ADE0A26915BABFB4008C9A2D /* PTPusherEventPublisher.h */,
+				ADE0A26A15BABFB4008C9A2D /* PTPusherMacros.h */,
+				ADE0A26B15BABFB4008C9A2D /* PTPusherMockConnection.h */,
+				ADE0A26C15BABFB4008C9A2D /* PTPusherPresenceChannelDelegate.h */,
+				ADE0A26D15BABFB4008C9A2D /* SRWebSocket.h */,
+			);
+			path = headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ADE0A23515BAB598008C9A2D /* tabomb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADE0A25715BAB598008C9A2D /* Build configuration list for PBXNativeTarget "tabomb" */;
+			buildPhases = (
+				ADE0A23215BAB598008C9A2D /* Sources */,
+				ADE0A23315BAB598008C9A2D /* Frameworks */,
+				ADE0A23415BAB598008C9A2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tabomb;
+			productName = tabomb;
+			productReference = ADE0A23615BAB598008C9A2D /* tabomb.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ADE0A22D15BAB598008C9A2D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = ADE0A23015BAB598008C9A2D /* Build configuration list for PBXProject "tabomb" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ADE0A22B15BAB598008C9A2D;
+			productRefGroup = ADE0A23715BAB598008C9A2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADE0A23515BAB598008C9A2D /* tabomb */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ADE0A23415BAB598008C9A2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE0A24515BAB598008C9A2D /* InfoPlist.strings in Resources */,
+				ADE0A25115BAB598008C9A2D /* ViewController_iPhone.xib in Resources */,
+				ADE0A25415BAB598008C9A2D /* ViewController_iPad.xib in Resources */,
+				ADE0A27515BABFB4008C9A2D /* README.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADE0A23215BAB598008C9A2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE0A24715BAB598008C9A2D /* main.m in Sources */,
+				ADE0A24B15BAB598008C9A2D /* AppDelegate.m in Sources */,
+				ADE0A24E15BAB598008C9A2D /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ADE0A24315BAB598008C9A2D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADE0A24415BAB598008C9A2D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ADE0A24F15BAB598008C9A2D /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADE0A25015BAB598008C9A2D /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		ADE0A25215BAB598008C9A2D /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADE0A25315BAB598008C9A2D /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ADE0A25515BAB598008C9A2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-all_load";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADE0A25615BAB598008C9A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-all_load";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ADE0A25815BAB598008C9A2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tabomb/tabomb-Prefix.pch";
+				INFOPLIST_FILE = "tabomb/tabomb-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/libPusher\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ADE0A25915BAB598008C9A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tabomb/tabomb-Prefix.pch";
+				INFOPLIST_FILE = "tabomb/tabomb-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/libPusher\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ADE0A23015BAB598008C9A2D /* Build configuration list for PBXProject "tabomb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADE0A25515BAB598008C9A2D /* Debug */,
+				ADE0A25615BAB598008C9A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADE0A25715BAB598008C9A2D /* Build configuration list for PBXNativeTarget "tabomb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADE0A25815BAB598008C9A2D /* Debug */,
+				ADE0A25915BAB598008C9A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ADE0A22D15BAB598008C9A2D /* Project object */;
+}

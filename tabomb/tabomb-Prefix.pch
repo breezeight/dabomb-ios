@@ -1,0 +1,16 @@
+//
+// Prefix header for all source files of the 'tabomb' target in the 'tabomb' project
+//
+
+#import <Availability.h>
+
+#define PUSHER_API_KEY  @"7dbe80833ef672041d15"
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
