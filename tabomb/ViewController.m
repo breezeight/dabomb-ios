@@ -153,6 +153,41 @@
                       cancelButtonTitle:@"Ok" 
                       otherButtonTitles:nil] show];
 }
+#pragma mark pusher notification
+
+- (void) onPlayerAvailable: (NSString*) matchCode
+{
+    DLog(@"match created");
+    Match *match = [[Match alloc] init];
+    match.identifier = matchCode;
+    [self matchCreated:match];
+}
+
+- (void) didReceiveChannelEventNotification:(NSNotification *)notification
+{
+    DLog(@"%@", notification);
+    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
+    
+    /*NSError *e = nil;
+     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
+     
+     if (!jsonArray) {
+     NSLog(@"Error parsing JSON: %@", e);
+     } else {
+     for(NSDictionary *item in jsonArray) {
+     NSLog(@"Item: %@", item);
+     }
+     }*/
+    DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
+    NSDictionary* data = [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data];
+    if ([data objectForKey:@"code"])
+        [self onPlayerAvailable:[data objectForKey:@"code"]];
+    if ([data objectForKey:@"boom"]) {
+        ULog(@"You smell like a cavaron... nobody want play with you!");
+        [self.loadingView hide:YES];
+    }
+}
+
 
 #pragma mark Match
 
@@ -167,13 +202,16 @@
         if (isOk) {
             if (isPlayerAvailable) {
                 DLog(@"match created");
-                Match *match = [[Match alloc] init];
-                match.identifier = matchCode;
-                [self matchCreated:match];
+                [self onPlayerAvailable:matchCode];
             } else {
                 DLog(@"no players ready to play");
                 // TODO: liste for player available notification.
                 // call createNewMatch when ready
+                [[NSNotificationCenter defaultCenter] 
+                 addObserver:self 
+                 selector:@selector(didReceiveChannelEventNotification:) 
+                 name:PTPusherEventReceivedNotification 
+                 object:[[TBApi sharedTBApi] channel]];
             }
         } else {
             [self failedToRegisterUserWithError:errorString];
