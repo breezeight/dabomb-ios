@@ -7,10 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BombWire.h"
+
+#define kNumberOfWires 8
 
 @interface Match : NSObject
+{
+    NSMutableArray *_wires;
+}
 
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSArray *wires;
+@property (strong, nonatomic) BombWire *killerWire;
+- (void)shuffleWires;
 
 @end
