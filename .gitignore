@@ -13,3 +13,8 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+
+# system noise
+.DS_Store
+*.swp
+*~.nib
