@@ -14,6 +14,7 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
 - (IBAction)play:(id)sender;
 
 @end
