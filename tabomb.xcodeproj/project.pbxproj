@@ -10,6 +10,7 @@
 		3D8A153915BAE081001131B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A153815BAE081001131B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3D8A153D15BAE6C1001131B6 /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A153B15BAE6C1001131B6 /* MatchViewController.m */; };
 		3D8A153E15BAE6C1001131B6 /* MatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */; };
+		3D8A154915BAED7F001131B6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A154815BAED7F001131B6 /* User.m */; };
 		AD56248A15BADE6F00B808CD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247615BADE6F00B808CD /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD56248B15BADE6F00B808CD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247815BADE6F00B808CD /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD56248C15BADE6F00B808CD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD56247A15BADE6F00B808CD /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -44,6 +45,8 @@
 		3D8A153A15BAE6C1001131B6 /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchViewController.h; sourceTree = "<group>"; };
 		3D8A153B15BAE6C1001131B6 /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
 		3D8A153C15BAE6C1001131B6 /* MatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchViewController.xib; sourceTree = "<group>"; };
+		3D8A154715BAED7F001131B6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		3D8A154815BAED7F001131B6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		AD56247515BADE6F00B808CD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		AD56247615BADE6F00B808CD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		AD56247715BADE6F00B808CD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 			children = (
 				AD5624B015BAEB5300B808CD /* TBApi.h */,
 				AD5624B115BAEB5300B808CD /* TBApi.m */,
+				3D8A154715BAED7F001131B6 /* User.h */,
+				3D8A154815BAED7F001131B6 /* User.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				3D8A153915BAE081001131B6 /* MBProgressHUD.m in Sources */,
 				3D8A153D15BAE6C1001131B6 /* MatchViewController.m in Sources */,
 				AD5624B215BAEB5300B808CD /* TBApi.m in Sources */,
+				3D8A154915BAED7F001131B6 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
