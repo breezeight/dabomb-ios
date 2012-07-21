@@ -10,17 +10,29 @@
 
 #import "ViewController.h"
 #import "PTPusherConnection.h"
+#import "User.h"
+
+@interface AppDelegate ()
+
+- (User *)readUserFromDisk;
+- (BOOL)removeUserFromDisk:(User *)user;
+
+@end
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize pusherClient = _pusherClient;
+@synthesize user = _user;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //PUSHER
     self.pusherClient = [PTPusher pusherWithKey:PUSHER_API_KEY delegate:self encrypted:NO];
+    
+    // user
+    self.user = [self readUserFromDisk];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -198,4 +210,51 @@
 {
     DLog(@"");
 }
+
+#pragma mark User session
+
+- (NSString *)userCacheFile {
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"sharedUser.plist"];
+}
+
+- (User *)readUserFromDisk {
+	// read from disk		
+	if (![[NSFileManager defaultManager] fileExistsAtPath:[self userCacheFile]]) {
+		return nil;
+	}
+	
+	NSData *data = [[NSData alloc] initWithContentsOfFile:[self userCacheFile]]; 
+	NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];	
+	
+	User *user = [unarchiver decodeObjectForKey:@"user"];
+	[unarchiver finishDecoding];
+    
+	return user;
+}
+
+- (BOOL)saveUserToDisk:(User *)user {
+	NSMutableData *data = [[NSMutableData alloc] init]; 
+	NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+	
+	[archiver encodeObject:user forKey:@"user"];
+	[archiver finishEncoding];
+    
+    // create user file
+	BOOL result = [data writeToFile:[self userCacheFile] atomically:YES];
+	if (result) {
+		DLog(@"user was saved to disk: %@", user);
+        self.user = user;
+	} else {
+		DLog(@"error while saving user to disk");
+	}
+	
+	return result;
+}
+
+- (BOOL)removeUserFromDisk:(User *)user {
+	// remove user file
+	return [[NSFileManager defaultManager] removeItemAtPath:[self userCacheFile] error:nil];
+}
+
 @end

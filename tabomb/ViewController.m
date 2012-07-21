@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "MBProgressHUD.h"
 #import "MatchViewController.h"
+#import "TBApi.h"
+#import "User.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -18,7 +21,7 @@
 
 - (BOOL)hasUser;
 - (void)registerUser;
-- (void)userRegistered:(id)response;
+- (void)userRegistered:(User *)user;
 - (void)failedToRegisterUserWithError:(NSError *)error;
 
 - (void)createNewMatch;
@@ -106,8 +109,9 @@
 #pragma mark User
 
 - (BOOL)hasUser {
-    // TODO check if there is a valid user session
-    return NO;
+    // check if there is a valid user session
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return delegate.user != nil;
 }
 
 - (void)registerUser {
@@ -116,10 +120,16 @@
     
     // ask server to create new match
 #warning registering a new user is simulated
-    [self performSelector:@selector(userRegistered:) withObject:nil afterDelay:2];
+    User *fakeUser = [[User alloc] init];
+    fakeUser.username = @"fake";
+    [self performSelector:@selector(userRegistered:) withObject:fakeUser afterDelay:2];
 }
 
-- (void)userRegistered:(id)response {
+- (void)userRegistered:(User *)user {
+    // save user
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate saveUserToDisk:user];
+    
     [self.loadingView hide:YES];
     // unlock play button
     [self setCanPlay:YES];

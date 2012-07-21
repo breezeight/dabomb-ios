@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PTPusher.h"
+@class User;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, PTPusherDelegate>
 
@@ -16,5 +17,8 @@
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) PTPusher *pusherClient;
+
+@property (strong, nonatomic) User *user;
+- (BOOL)saveUserToDisk:(User *)user;
 
 @end
