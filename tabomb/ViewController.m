@@ -172,7 +172,8 @@
                 [self matchCreated:match];
             } else {
                 DLog(@"no players ready to play");
-#warning listen for player available notification
+                // TODO: liste for player available notification.
+                // call createNewMatch when ready
             }
         } else {
             [self failedToRegisterUserWithError:errorString];

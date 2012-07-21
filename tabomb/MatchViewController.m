@@ -169,7 +169,8 @@
                      [self.loadingView hide:YES];
                  } else {
                      DLog(@"no players ready to play");
-    #warning listen for player available notification
+                     // TODO: liste for player available notification.
+                     // call createNewMatch when ready
                  }
              } else {
                  // in case request has failed go back to the main controller
