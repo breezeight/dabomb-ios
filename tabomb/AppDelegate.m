@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //PUSHER
-    self.pusherClient = [PTPusher pusherWithKey:@"YOUR-API-KEY" delegate:self encrypted:NO];
+    self.pusherClient = [PTPusher pusherWithKey:PUSHER_API_KEY delegate:self encrypted:NO];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -82,6 +82,7 @@
  */
 - (void) pusher:(PTPusher *)pusher connectionDidConnect:(PTPusherConnection *)connection
 {
+    DLog(@"");
 }
 
 
@@ -93,6 +94,8 @@
  */
 - (void)pusher:(PTPusher *)pusher connection:(PTPusherConnection *)connection didDisconnectWithError:(NSError *)error
 {
+    DLog(@"%@", error);
+    self.pusherClient.reconnectAutomatically = YES;
 }
 
 /** Notifies the delegate that the PTPusher instance failed to connect to the Pusher service.
@@ -109,6 +112,8 @@
  */
 - (void)pusher:(PTPusher *)pusher connection:(PTPusherConnection *)connection failedWithError:(NSError *)error
 {
+    DLog(@"");
+    self.pusherClient.reconnectAutomatically = YES;
 }
 
 /** Notifies the delegate that the PTPusher instance is about to attempt reconnection.
@@ -123,6 +128,7 @@
  */
 - (void)pusher:(PTPusher *)pusher connectionWillReconnect:(PTPusherConnection *)connection afterDelay:(NSTimeInterval)delay
 {
+    DLog(@"");
 }
 
 /** Notifies the delegate of the request that will be used to authorize access to a channel.
@@ -139,6 +145,7 @@
  */
 - (void)pusher:(PTPusher *)pusher willAuthorizeChannelWithRequest:(NSMutableURLRequest *)request
 {
+    DLog(@"");
 }
 
 /** Notifies the delegate that the PTPusher instance has subscribed to the specified channel.
@@ -150,6 +157,8 @@
  */
 - (void)pusher:(PTPusher *)pusher didSubscribeToChannel:(PTPusherChannel *)channel
 {
+    //LOG
+    DLog(@"");
 }
 
 /** Notifies the delegate that the PTPusher instance has unsubscribed from the specified channel.
@@ -161,6 +170,7 @@
  */
 - (void)pusher:(PTPusher *)pusher didUnsubscribeFromChannel:(PTPusherChannel *)channel
 {
+    DLog(@"");
 }
 
 /** Notifies the delegate that the PTPusher instance failed to subscribe to the specified channel.
@@ -173,6 +183,7 @@
  */
 - (void)pusher:(PTPusher *)pusher didFailToSubscribeToChannel:(PTPusherChannel *)channel withError:(NSError *)error
 {
+    DLog(@"");
 }
 
 /** Notifies the delegate that an error event has been received.
@@ -185,5 +196,6 @@
  */
 - (void)pusher:(PTPusher *)pusher didReceiveErrorEvent:(PTPusherErrorEvent *)errorEvent
 {
+    DLog(@"");
 }
 @end
