@@ -91,6 +91,29 @@
     }
 }
 
+- (IBAction)wireViewPressed:(BombWireView *)view {
+    // cut this wire!
+    BombWire *wire = view.wire;
+    wire.cut = YES;
+    
+    // check if user has pressed the killer wire
+    // or if user has cut all the good wires
+    if ([self.match.killerWire isEqual:wire]) {
+        [self stopTimer];
+        [[[UIAlertView alloc] initWithTitle:@"You looooose!" 
+                                    message:nil 
+                                   delegate:nil 
+                          cancelButtonTitle:@"Close" 
+                          otherButtonTitles:@"Play again", nil] show];
+    } else if (![self.match hasMoreWiresToCut]) {
+        [[[UIAlertView alloc] initWithTitle:@"You wiiin!" 
+                                    message:nil 
+                                   delegate:nil 
+                          cancelButtonTitle:@"Close" 
+                          otherButtonTitles:@"Play again", nil] show];
+    }
+}
+
 #pragma mark Timer
 
 - (void)startTimer {

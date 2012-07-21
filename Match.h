@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSArray *wires;
 @property (strong, nonatomic) BombWire *killerWire;
 - (void)shuffleWires;
+- (BOOL)hasMoreWiresToCut;
 
 @end

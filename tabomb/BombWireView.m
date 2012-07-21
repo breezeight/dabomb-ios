@@ -14,7 +14,7 @@
 @synthesize wire = _wire;
 
 - (void)setup {
-    self.backgroundColor = [UIColor lightGrayColor];
+    [self addTarget:self action:@selector(cutWire) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -37,9 +37,17 @@
 }
 
 - (void)updateWithWire:(BombWire *)wire {
+    self.wire = wire;
     [self setTitle:wire.colorName forState:UIControlStateNormal];
     [self setTitleColor:wire.color forState:UIControlStateNormal];
     [self setTitleColor:wire.color forState:UIControlStateHighlighted];
+    self.enabled = YES;
+    self.backgroundColor = [UIColor lightGrayColor];
+}
+
+- (void)cutWire {
+    self.enabled = NO;
+    self.backgroundColor = [UIColor darkGrayColor];
 }
 
 @end

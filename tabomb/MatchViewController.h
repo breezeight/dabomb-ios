@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class Match;
+@class BombWireView;
 
 @interface MatchViewController : UIViewController
 
@@ -16,5 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property (strong, nonatomic) IBOutlet UIView *wiresView;
+
+- (IBAction)wireViewPressed:(BombWireView *)view;
 
 @end

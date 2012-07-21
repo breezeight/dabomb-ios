@@ -91,4 +91,13 @@
     self.killerWire = wire;
 }
 
+- (BOOL)hasMoreWiresToCut {
+    for (BombWire *wire in self.wires) {
+        if (!wire.cut && ![wire isEqual:self.killerWire]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end
