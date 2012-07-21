@@ -10,7 +10,7 @@
 #import "Match.h"
 #import "BombWireView.h"
 
-@interface MatchViewController ()
+@interface MatchViewController () <UIAlertViewDelegate>
 
 - (void)updateWiresView;
 
@@ -102,15 +102,28 @@
         [self stopTimer];
         [[[UIAlertView alloc] initWithTitle:@"You looooose!" 
                                     message:nil 
-                                   delegate:nil 
+                                   delegate:self 
                           cancelButtonTitle:@"Close" 
                           otherButtonTitles:@"Play again", nil] show];
     } else if (![self.match hasMoreWiresToCut]) {
+        [self stopTimer];
         [[[UIAlertView alloc] initWithTitle:@"You wiiin!" 
                                     message:nil 
-                                   delegate:nil 
+                                   delegate:self 
                           cancelButtonTitle:@"Close" 
                           otherButtonTitles:@"Play again", nil] show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.match hasMoreWiresToCut]) {
+#warning start a new match is simulated
+        self.match.createdAt = [NSDate date];
+        [self.match shuffleWires];
+        [self updateWiresView];
+        [self startTimer];
     }
 }
 
