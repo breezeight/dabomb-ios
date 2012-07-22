@@ -165,23 +165,11 @@
 
 - (void) didReceiveChannelEventNotification:(NSNotification *)notification
 {
-    DLog(@"%@", notification);
-    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
-    
-    /*NSError *e = nil;
-     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
-     
-     if (!jsonArray) {
-     NSLog(@"Error parsing JSON: %@", e);
-     } else {
-     for(NSDictionary *item in jsonArray) {
-     NSLog(@"Item: %@", item);
-     }
-     }*/
     DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
     NSDictionary* data = [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data];
     if ([data objectForKey:@"code"])
         [self onPlayerAvailable:[data objectForKey:@"code"]];
+    DLog(@"Starting the match");
     if ([data objectForKey:@"boom"]) {
         ULog(@"You smell like a cavaron... nobody want play with you!");
         [self.loadingView hide:YES];

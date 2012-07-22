@@ -77,17 +77,27 @@
         wire.cut = NO;
     }
     
-    BombWire *wire = [self.wires objectAtIndex:random() % self.wires.count];
-    self.killerWire = wire;
+    //BombWire *wire = [self.wires objectAtIndex:random() % self.wires.count];
+    //self.killerWire = wire;
+    for (BombWire *wire in self.wires) {
+      if (wire.colorName == @"red")
+          self.killerWire = wire;
+    }
 }
 
 - (BOOL)hasMoreWiresToCut {
+    int cuttedWires = 0;
     for (BombWire *wire in self.wires) {
-        if (!wire.cut && ![wire isEqual:self.killerWire]) {
-            return YES;
+        if (wire.cut == YES) {
+            cuttedWires++;
         }
     }
-    return NO;
+    
+    if (cuttedWires == (self.wires.count - 1)) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

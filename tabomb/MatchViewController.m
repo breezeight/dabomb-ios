@@ -49,7 +49,18 @@
         self.timerFormatter = [[NSDateFormatter alloc] init];
         self.timerFormatter.dateFormat = @"mm:ss";
     }
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(didReceiveChannelEventNotification:) 
+     name:PTPusherEventReceivedNotification 
+     object:[[TBApi sharedTBApi] channel]];
+
     return self;
+}
+
+- (void) dealloc {
+    DLog(@"");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PTPusherEventReceivedNotification object:nil];
 }
 
 - (void)viewDidLoad
@@ -113,19 +124,9 @@
     // check if user has pressed the killer wire
     // or if user has cut all the good wires
     if ([self.match.killerWire isEqual:wire]) {
-        [self matchDidEnd:YES];
-        [[[UIAlertView alloc] initWithTitle:@"You looooose!" 
-                                    message:nil 
-                                   delegate:self 
-                          cancelButtonTitle:@"Close" 
-                          otherButtonTitles:@"Play again", nil] show];
-    } else if (![self.match hasMoreWiresToCut]) {
         [self matchDidEnd:NO];
-        [[[UIAlertView alloc] initWithTitle:@"You wiiin!" 
-                                    message:nil 
-                                   delegate:self 
-                          cancelButtonTitle:@"Close" 
-                          otherButtonTitles:@"Play again", nil] show];
+    } else if (![self.match hasMoreWiresToCut]) {
+        [self matchDidEnd:YES];
     }
 }
 
@@ -138,6 +139,7 @@
     } else {
         elapsedTime = -1;
     }
+    DLog(@"elapsedTime %f ms", elapsedTime);
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [[TBApi sharedTBApi] onMatchFinished:delegate.user.username 
@@ -176,12 +178,6 @@
                      DLog(@"no players ready to play");
                      // TODO: liste for player available notification.
                      // call createNewMatch when ready
-
-                     [[NSNotificationCenter defaultCenter] 
-                      addObserver:self 
-                      selector:@selector(didReceiveChannelEventNotification:) 
-                      name:PTPusherEventReceivedNotification 
-                      object:[[TBApi sharedTBApi] channel]];
                  }
              } else {
                  // in case request has failed go back to the main controller
@@ -199,25 +195,28 @@
 #pragma mark pusher notification
 
 - (void) didReceiveChannelEventNotification:(NSNotification *)notification
-{
-    DLog(@"%@", notification);
-    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
-    
-    /*NSError *e = nil;
-     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
-     
-     if (!jsonArray) {
-     NSLog(@"Error parsing JSON: %@", e);
-     } else {
-     for(NSDictionary *item in jsonArray) {
-     NSLog(@"Item: %@", item);
-     }
-     }*/
-    DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
+{    
     NSDictionary* data = [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data];
-    if ([data objectForKey:@"code"])
-        [self onPlayerAvailable:[data objectForKey:@"code"]];
-    //[[[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data] objectForKey:@"code"];
+
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+
+    if ([data objectForKey:@"winner"]) {
+        DLog(@"The Winner is %@", [data objectForKey:@"winner"])
+        if([[data objectForKey:@"winner"] isEqual:delegate.user.username] ) {
+            [[[UIAlertView alloc] initWithTitle:@"You wiiin!" 
+                                        message:nil 
+                                       delegate:self 
+                              cancelButtonTitle:@"Play again!" 
+                              otherButtonTitles: nil] show];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"You looooose!" 
+                                        message:nil 
+                                       delegate:self 
+                              cancelButtonTitle:@"Play again!" 
+                              otherButtonTitles: nil] show];            
+        }
+    }
 }
 
 #pragma mark Timer

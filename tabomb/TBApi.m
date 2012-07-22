@@ -70,7 +70,7 @@
 {
     //TODO codice partita
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: defuseTime, @"time", username, @"username", nil];
-    [[TBApi sharedTBApi] putPath:[NSString stringWithFormat:kTBDefusePath, matchIdentifier] 
+    [[TBApi sharedTBApi] postPath:[NSString stringWithFormat:kTBDefusePath, matchIdentifier] 
                       parameters:params 
                          success:^(AFHTTPRequestOperation *operation, id JSON) {
                              block(true, @"");
@@ -98,21 +98,8 @@
 
 - (void) didReceiveChannelEventNotification:(NSNotification *)notification
 {
-    DLog(@"%@", notification);
-    [[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"];
-
-    /*NSError *e = nil;
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] options: NSJSONReadingMutableContainers error: &e];
-    
-    if (!jsonArray) {
-        NSLog(@"Error parsing JSON: %@", e);
-    } else {
-        for(NSDictionary *item in jsonArray) {
-            NSLog(@"Item: %@", item);
-        }
-    }*/
-    DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
-    
+    //DLog(@"%@", notification);
+    //DLog(@"DATA %@", [[[notification userInfo] objectForKey:@"PTPusherEventUserInfoKey"] data]);
 }
 
 /*
