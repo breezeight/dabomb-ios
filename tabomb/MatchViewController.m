@@ -110,10 +110,23 @@
 }
 
 - (void)updateWiresView {
-    for (BombWire *wire in self.match.wires) {
+/*    for (BombWire *wire in self.match.wires) {
         BombWireView *view = [self.wiresView.subviews objectAtIndex:[self.match.wires indexOfObject:wire]];
         [view updateWithWire:wire];
     }
+
+    for (int i = 1; i<=6; i++) {
+        BombWireView *view = [self.wiresView viewWithTag:i];
+        [view updateWithWire:wire];
+    }*/
+
+    for (int i = 1; i<=6; i++) {
+        BombWire *wire = [self.match.wires objectAtIndex:i-1];
+        BombWireView *view = [self.wiresView viewWithTag:i];
+        [view updateWithWire:wire];
+    }
+
+
 }
 
 - (IBAction)wireViewPressed:(BombWireView *)view {
@@ -214,7 +227,12 @@
                                         message:nil 
                                        delegate:self 
                               cancelButtonTitle:@"Play again!" 
-                              otherButtonTitles: nil] show];            
+                              otherButtonTitles: nil] show];
+            
+            
+            
+            
+            
         }
     }
 }
