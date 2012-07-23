@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property (strong, nonatomic) IBOutlet UIView *wiresView;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 - (IBAction)wireViewPressed:(BombWireView *)view;
 - (void) onPlayerAvailable: (NSString*) matchCode;

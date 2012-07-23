@@ -48,6 +48,9 @@
 		AD5624F415BBF4F800B808CD /* user_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5624DF15BBF4F800B808CD /* user_ok.png */; };
 		AD5624F615BBF61D00B808CD /* copertina.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5624F515BBF61D00B808CD /* copertina.png */; };
 		AD5624F815BBF63200B808CD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5624F715BBF63200B808CD /* Default@2x.png */; };
+		AD5624FB15BC081800B808CD /* esplosione-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5624F915BC081800B808CD /* esplosione-1.png */; };
+		AD5624FC15BC081800B808CD /* esplosione-2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5624FA15BC081800B808CD /* esplosione-2.png */; };
+		AD5624FE15BC085500B808CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5624FD15BC085500B808CD /* QuartzCore.framework */; };
 		ADE0A23B15BAB598008C9A2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23A15BAB598008C9A2D /* UIKit.framework */; };
 		ADE0A23D15BAB598008C9A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23C15BAB598008C9A2D /* Foundation.framework */; };
 		ADE0A23F15BAB598008C9A2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0A23E15BAB598008C9A2D /* CoreGraphics.framework */; };
@@ -124,6 +127,9 @@
 		AD5624DF15BBF4F800B808CD /* user_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_ok.png; sourceTree = "<group>"; };
 		AD5624F515BBF61D00B808CD /* copertina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copertina.png; sourceTree = "<group>"; };
 		AD5624F715BBF63200B808CD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AD5624F915BC081800B808CD /* esplosione-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "esplosione-1.png"; sourceTree = "<group>"; };
+		AD5624FA15BC081800B808CD /* esplosione-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "esplosione-2.png"; sourceTree = "<group>"; };
+		AD5624FD15BC085500B808CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ADE0A23615BAB598008C9A2D /* tabomb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tabomb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE0A23A15BAB598008C9A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADE0A23C15BAB598008C9A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5624FE15BC085500B808CD /* QuartzCore.framework in Frameworks */,
 				ADE0A27D15BAC05B008C9A2D /* SystemConfiguration.framework in Frameworks */,
 				ADE0A27B15BAC04E008C9A2D /* Security.framework in Frameworks */,
 				ADE0A27915BAC03D008C9A2D /* CFNetwork.framework in Frameworks */,
@@ -279,6 +286,8 @@
 		AD5624CD15BBF4F800B808CD /* esplosione */ = {
 			isa = PBXGroup;
 			children = (
+				AD5624F915BC081800B808CD /* esplosione-1.png */,
+				AD5624FA15BC081800B808CD /* esplosione-2.png */,
 			);
 			path = esplosione;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 		ADE0A22B15BAB598008C9A2D = {
 			isa = PBXGroup;
 			children = (
+				AD5624FD15BC085500B808CD /* QuartzCore.framework */,
 				AD5624F715BBF63200B808CD /* Default@2x.png */,
 				AD5624C415BBF4F800B808CD /* immagini */,
 				AD5624AE15BAEB1E00B808CD /* Networking */,
@@ -493,6 +503,8 @@
 				AD5624F415BBF4F800B808CD /* user_ok.png in Resources */,
 				AD5624F615BBF61D00B808CD /* copertina.png in Resources */,
 				AD5624F815BBF63200B808CD /* Default@2x.png in Resources */,
+				AD5624FB15BC081800B808CD /* esplosione-1.png in Resources */,
+				AD5624FC15BC081800B808CD /* esplosione-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

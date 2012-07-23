@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MatchViewController () <UIAlertViewDelegate>
 
@@ -38,6 +39,7 @@
 @synthesize timerFormatter = _timerFormatter;
 @synthesize wiresView = _wiresView;
 @synthesize loadingView = _loadingView;
+@synthesize backgroundView = _backgroundView;
 
 - (id)initWithMatch:(Match *)match
 {
@@ -229,8 +231,23 @@
                               cancelButtonTitle:@"Play again!" 
                               otherButtonTitles: nil] show];
             
+            /*
+            CABasicAnimation *animation = [CABasicAnimation animation];
+            animation.fromValue = (id)[UIImage imageNamed:@"esplosione-1.png"].CGImage;
+            animation.toValue = (id)[UIImage imageNamed:@"esplosione-2.png"].CGImage;
+            animation.duration = 1.0f;
+            animation.repeatCount = HUGE_VAL;
+            animation.autoreverses = YES;
+
+            [[self.view viewWithTag:0].layer addAnimation:animation forKey:@"contents"];
+            */
             
             
+            CABasicAnimation *crossFade = [CABasicAnimation animationWithKeyPath:@"contents"];
+            crossFade.duration = 5.0;
+            crossFade.fromValue = (id)[UIImage imageNamed:@"esplosione-1.png"].CGImage;
+            crossFade.toValue = (id)[UIImage imageNamed:@"esplosione-2.png"].CGImage;
+            [self.backgroundView.layer addAnimation:crossFade forKey:@"animateContents"];
             
             
         }
